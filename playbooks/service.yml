@@ -1,0 +1,9 @@
+---
+
+- name: Check service status
+  hosts: all
+  gather_facts: false
+
+  tasks:
+  - name: Test reachabilty
+    ansible.builtin.ping:

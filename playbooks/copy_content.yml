@@ -1,0 +1,14 @@
+---
+
+- name: Demonstrate copy module with content
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: copy content to destiny
+      copy:
+       content: |
+         This is a test for banner.
+         This server runs unix
+       dest: "/home/ansible/motd"
+
