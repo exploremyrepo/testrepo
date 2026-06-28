@@ -7,12 +7,12 @@
   
   tasks:
    - name: using stat to check file
-     stat:
+     ansible.builtin.stat:
          path: "{{ file }}"
      register: filestat
 
    - name: Print reult
-     debug:
+     ansible.builtin.debug:
          msg: "the backup is {{ filestat.stat.exists }} "
      when: ansible_distribution == "Ubuntu"
    - name: Actual backup work
