@@ -1,7 +1,7 @@
 ---
 
 - name: Check for file existenxe
-  hosts: localhost
+  hosts: 192.168.1.43,ansible
   vars:
    file: /home/ansible/motd.bkp
   
