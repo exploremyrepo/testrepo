@@ -1,0 +1,23 @@
+---
+
+- name: Check for file existenxe
+  hosts: localhost
+  vars:
+   file: /home/ansible/motd.bkp
+  
+  tasks:
+   - name: using stat to check file
+     stat:
+         path: "{{ file }}"
+     register: filestat
+
+   - name: Print reult
+     debug:
+         msg: "the backup is {{ filestat.stat.exists }} "
+     when: ansible_distribution == "Ubuntu"
+   - name: Actual backup work
+     copy: 
+       src: /home/ansible/motd
+       dest: "{{ file }}"
+       remote_src: true
+     when: not filestat.stat.exists
